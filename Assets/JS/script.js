@@ -4,17 +4,13 @@ var generateBtn = document.querySelector("#generate");
 const answeryes = "yes"
 const answerno = "no"
 
-var yesLC = "yesincludeLC"
-var noLC = "noincludeLC"
+var lowercaseDecision;
 
-var yesUC = "yesincludeUC"
-var noUC = "noincludeUC"
+var uppercaseDecision;
 
-var yesN = "yesincludeN"
-var noN = "noincludeN"
+var numbersDecision;
 
-var yesS = "yesincludeS"
-var noS = "noincludeS"
+var specialDecision;
 
 // Write password to the #password input
 function writePassword() {
@@ -38,7 +34,7 @@ function generatePassword() {
 function issuePrompts() {
   characterLength();
   characterType();
-  // validateUserChoice();
+  // validateUserChoice(); // if ___decision variables are true, assign the var to an array of lowercase, uppercase, numbers, and specials characters
 }
 
 function characterLength() {
@@ -52,35 +48,34 @@ function characterLength() {
   }
 };
 
-function characterType() {
+function characterType() { 
   var resultLC = confirmLowercase();
   if (resultLC === answeryes) { 
-    return yesLC;
+    lowercaseDecision = true
   }
   else if (resultLC === answerno) {
-    return noLC;
-    resultUC
+    lowercaseDecision = false 
   };
   var resultUC = confirmUppercase();
   if (resultUC === answeryes) {
-    return yesUC
+    uppercaseDecision = true
   }
   else if (resultUC === answerno) {
-    return noUC
+    uppercaseDecision = false
   };
   var resultN = confirmNumeric();
   if (resultN === answeryes) {
-    return yesN
+    numbersDecision = true
   }
   else if (resultN === answerno) {
-    return noN
+    numbersDecision = false
   };
   var resultS = confirmSpecialCharacters();
   if (resultS === answeryes) {
-    return yesS
+    specialDecision = true
   }
   else if (resultS === answerno) {
-    return noS
+    specialDecision = false
   };
 };
 
