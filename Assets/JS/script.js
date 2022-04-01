@@ -5,12 +5,20 @@ const answeryes = "yes"
 const answerno = "no"
 
 var lowercaseDecision;
+var lowercaseValues = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var randomLC;
 
 var uppercaseDecision;
+var uppercaseValues = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var randomUC;
 
 var numbersDecision;
+var numbersValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var randomN;
 
 var specialDecision;
+var specialValues = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?" , "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+var randomS;
 
 // Write password to the #password input
 function writePassword() {
@@ -26,15 +34,15 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   alert("You will now begin choosing your password criteria.")
   issuePrompts();
-  // if (issuePrompts()) {
-  //   "then it generates a password"
-  // }
+  if (randomLC){
+
+  }
 }
 
 function issuePrompts() {
   characterLength();
   characterType();
-  // validateUserChoice(); // if ___decision variables are true, assign the var to an array of lowercase, uppercase, numbers, and specials characters
+  validateUserChoice(); // if ___decision variables are true, assign the var to an array of lowercase, uppercase, numbers, and specials characters
 }
 
 function characterLength() {
@@ -123,6 +131,33 @@ function confirmSpecialCharacters() {
   }
 }
 
-// function validateUserChoice() {
-
-// }
+function validateUserChoice() {
+  if (lowercaseDecision) {
+    // lowercaseValues = true;
+    randomLC = Math.floor(Math.random() * lowercaseValues.length);
+    // if (lowercaseValues) {
+    //   var randomLC = true;
+    // }
+  }
+  if (uppercaseDecision) {
+    // uppercaseValues = true;
+    randomUC = Math.floor(Math.random() * uppercaseValues.length);
+    // if (uppercaseValues) {
+    //   var randomUC = true;
+    // }
+  }
+  if (numbersDecision){
+    // numbersValues = true;
+    randomN = Math.floor(Math.random() * numbersValues.length);
+    // if (numberValues) {
+    //   var randomN = true;
+    // }
+  }
+  if (specialDecision) {
+    // specialValues = true;
+    randomS = Math.floor(Math.random() * specialValues.length);
+    // if (specialValues) {
+    //   var randomS = true;
+    // } 
+  }
+}
