@@ -155,16 +155,16 @@ function confirmSpecialCharacters() {
 
 function validateUserChoice() {
   if (lowercaseDecision) {
-    charactersToInclude = charactersToInclude.concat(lowercaseValues)
+    charactersToInclude = charactersToInclude.concat(lowercaseValues);
   }
   if (uppercaseDecision) {
-    charactersToInclude = charactersToInclude.concat(uppercaseValues)
+    charactersToInclude = charactersToInclude.concat(uppercaseValues);
   }
   if (numbersDecision) {
-    charactersToInclude = charactersToInclude.concat(numbersValues)
+    charactersToInclude = charactersToInclude.concat(numbersValues);
   }
   if (specialDecision) {
-    charactersToInclude = charactersToInclude.concat(specialValues)
+    charactersToInclude = charactersToInclude.concat(specialValues);
   }
   console.log(charactersToInclude);
 }
