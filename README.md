@@ -18,7 +18,7 @@ See below:
 
 The programming languages used in this project were HTML, CSS, and JavaScript. 
 
-## **Important Code Snippet(s)**
+## **Important Sections**
 
 The JS file has multiple functions nested within each other. However, they are all written seperately from each other. The following function's purpose is to take the password that is generated in the `generatePassword()` function and inputs it to the `textarea` element of the html file (denoted by a `password` id). 
 
@@ -31,7 +31,7 @@ function writePassword() {
 }
 ```
 
-The below function is the `generatePassword()` function. This function's main responsibility is to gather user input data and to create the password itself, which is then transferred to the function above. 
+The below code snippet is the `generatePassword()` function. This function's main responsibility is to gather user input data and to create the password itself, which is then transferred to the function above and stored within the text area on the user's screen (see the screenshot below). 
 
 ```JavaScript
 function generatePassword() {
@@ -48,3 +48,5 @@ function generatePassword() {
   return password
 }
 ```
+
+![screenshot](./Assets/Images/password-textarea.PNG "Password Text Area")
