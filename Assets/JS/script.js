@@ -1,8 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-const answeryes = "yes"
-const answerno = "no"
+const answeryes = "yes";
+const answerno = "no";
 
 var lowercaseDecision;
 var lowercaseValues = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -21,150 +21,149 @@ var specialValues = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",
 
 var charactersToInclude = [];
 
+var password = "";
+
 var passwordLength;
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var passwordFinal = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
+  passwordText.value = passwordFinal;
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
-  alert("You will now begin choosing your password criteria.")
+  alert("You will now begin choosing your password criteria.");
   issuePrompts();
-  if (charactersToInclude) {
+  if (charactersToInclude.length > 0) {
     var randomize;
-    var password = [];
-    for (i = 0; i < passwordLength; i++) {
+    for (i = password.length; i < passwordLength; i++) {
       randomize = Math.floor(Math.random() * charactersToInclude.length);
       password += charactersToInclude[randomize];
-
-      console.log(randomize);
-      console.log(password);
     }
-    console.log(password);
-  }
-  return password
-}
+    return password;
+  } else {
+    alert("You must choose at least one character type.");
+    return "";
+  };
+  
+};
 
 function issuePrompts() {
   characterLength();
   characterType();
   validateUserChoice();
-}
+};
 
 function characterLength() {
   passwordLength = prompt("How many characters do you want your password to be comprised of?");
-  console.log(typeof(passwordLength))
   if (passwordLength >= 8 && passwordLength <= 128) {
-    return passwordLength
+    return passwordLength;
   }
   else {
-    confirm("Passwords must be at least 8 characters and no more than 128 characters.")
+    confirm("Passwords must be at least 8 characters and no more than 128 characters.");
     characterLength();
-  }
+  };
 };
 
 function characterType() { 
   var resultLC = confirmLowercase();
   if (resultLC === answeryes) { 
-    lowercaseDecision = true
-    console.log(lowercaseDecision);
+    lowercaseDecision = true;
   }
   else if (resultLC === answerno) {
-    lowercaseDecision = false 
-    console.log(lowercaseDecision);
+    lowercaseDecision = false;
   };
   var resultUC = confirmUppercase();
   if (resultUC === answeryes) {
     uppercaseDecision = true;
-    console.log(uppercaseDecision);
   }
   else if (resultUC === answerno) {
     uppercaseDecision = false;
-    console.log(uppercaseDecision);
   };
   var resultN = confirmNumeric();
   if (resultN === answeryes) {
     numbersDecision = true;
-    console.log(numbersDecision);
   }
   else if (resultN === answerno) {
     numbersDecision = false;
-    console.log(numbersDecision);
   };
   var resultS = confirmSpecialCharacters();
   if (resultS === answeryes) {
     specialDecision = true;
-    console.log(specialDecision);
   }
   else if (resultS === answerno) {
     specialDecision = false;
-    console.log(specialDecision);
   };
 };
 
 function confirmLowercase() {
-  var lowercase = prompt("Do you want your password to contain lowercase characters? Please answer 'yes' or 'no'.")
-  lowercase = lowercase.toLowerCase()
+  var lowercase = prompt("Do you want your password to contain lowercase characters? Please answer 'yes' or 'no'.");
+  lowercase = lowercase.toLowerCase();
   if (lowercase === "yes") {
     return answeryes;
   }
   else if (lowercase === "no") {
-    return answerno
-  }
-}
+    return answerno;
+  };
+};
 
 function confirmUppercase() {
-  var uppercase = prompt("Do you want your password to contain uppercase characters? Please answer 'yes' or 'no'.")
-  uppercase = uppercase.toLowerCase()
+  var uppercase = prompt("Do you want your password to contain uppercase characters? Please answer 'yes' or 'no'.");
+  uppercase = uppercase.toLowerCase();
   if (uppercase === "yes") {
-    return answeryes
+    return answeryes;
   }
   else if (uppercase === "no") {
-    return answerno
-  }
-}
+    return answerno;
+  };
+};
 
 function confirmNumeric() {
-  var numeric = prompt("Do you want your password to contain numeric characters? Please answer 'yes' or 'no'.")
-  numeric = numeric.toLowerCase()
+  var numeric = prompt("Do you want your password to contain numeric characters? Please answer 'yes' or 'no'.");
+  numeric = numeric.toLowerCase();
   if (numeric === "yes") {
-    return answeryes
+    return answeryes;
   }
   else if (numeric === "no") {
-    return answerno
-  }
-}
+    return answerno;
+  };
+};
 
 function confirmSpecialCharacters() {
-  var special = prompt("Do you want your password to contain special characters? Please answer 'yes' or 'no'.")
-  special = special.toLowerCase()
+  var special = prompt("Do you want your password to contain special characters? Please answer 'yes' or 'no'.");
+  special = special.toLowerCase();
   if (special === "yes") {
-    return answeryes
+    return answeryes;
   }
   else if (special === "no") {
-    return answerno
-  }
-}
+    return answerno;
+  };
+};
 
 function validateUserChoice() {
   if (lowercaseDecision) {
+    randomize = Math.floor(Math.random() * lowercaseValues.length);
+    password += lowercaseValues[randomize];
     charactersToInclude = charactersToInclude.concat(lowercaseValues);
-  }
+  };
   if (uppercaseDecision) {
+    randomize = Math.floor(Math.random() * uppercaseValues.length);
+    password += uppercaseValues[randomize];
     charactersToInclude = charactersToInclude.concat(uppercaseValues);
-  }
+  };
   if (numbersDecision) {
+    randomize = Math.floor(Math.random() * numbersValues.length);
+    password += numbersValues[randomize];
     charactersToInclude = charactersToInclude.concat(numbersValues);
-  }
+  };
   if (specialDecision) {
+    randomize = Math.floor(Math.random() * specialValues.length);
+    password += specialValues[randomize];
     charactersToInclude = charactersToInclude.concat(specialValues);
-  }
-  console.log(charactersToInclude);
-}
+  };
+};
